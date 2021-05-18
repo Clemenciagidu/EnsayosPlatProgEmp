@@ -1,5 +1,11 @@
 <?php
 	//var_dump($_POST);
+
+	header('Access-Control-Allow-Origin: *');
+	header('Access-Control-Allow-Methods: GET, POST');
+	header("Access-Control-Allow-Headers: X-Requested-With");
+
+
 	$salt = "MATRIX";
 	$usuario = array();
 	if(isset($_POST["nombre"]) && isset($_POST["apellido"])&& isset($_POST["celular"]) && isset($_POST["correo"]) && isset($_POST["ciudad"]))
