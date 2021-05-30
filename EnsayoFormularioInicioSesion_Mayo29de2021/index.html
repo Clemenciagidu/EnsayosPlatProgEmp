@@ -8,6 +8,7 @@
   <!-- https://getbootstrap.com/docs/4.5/getting-started/download/ -->
 	<script>
     //https://github.com/sha256/Pristine
+
 		let pst, frm;
 
 		window.onload = function () {
@@ -15,50 +16,70 @@
 			frm = document.getElementById("form-demo");
 			pst = new Pristine(frm);
 
-
-
 			frm.addEventListener('submit', function (e) {
 			   e.preventDefault();
 			   // check if the form is valid
-         
-         if(pst.validate()){
-           procesarDatos();
-          }
-          else{
-            frm.classList.add("was-validated");
-          }
-        });
-        frm.addEventListener('reset', function (e) {
-          frm.classList.remove("was-validated");
-        });
-      };
-      
-      
-      function procesarDatos(){
-        fetch('scripts/script.php', {
-          method: 'post',
-          body: new FormData(frm)
-          }).then(function(response) {
-          return response.json();
-          }).then(function(json){
-          cosole.log(json);
-          }).catch(function(err) {
-          // Error :(
-          console.log(err);
-          });
+			   
+               
+               
+               
+               if(pst.validate()){
 
-
-  
-    }
+                procesarDatos();
+               }
+               else{
+                frm.classList.add("was-validated");
+               }
+               
+        
+			});
+      frm.addEventListener('reset', function (e) {
+        frm.classList.remove("was-validated");
+      });
+		};
 
 
 
+
+        function procesarDatos(){
+        
+
+                    
+            fetch('scripts/script.php', {
+                method: 'post',
+                body: new FormData(frm)
+            }).then(function(response) {
+                return response.json();
+            }).then(function(json){
+                cosole.log(json);
+            }).catch(function(err) {
+                // Error :(
+                console.log(err);
+            });
+
+
+
+        
+        
+        
+        }
+
+
+
+
+
+
+
+
+
+
+	 
 	</script>
 </head>
 <body>
 
 <!-- <form id="form-demo" novalidate method="post" class="container" action="scripts/script.php"> -->
-<form id="form-demo" method="post" novalidate class="container" action="scripts/script.php">
+<form id="form-demo" novalidate method="post"  class="container">
 	<input type="hidden" />
   <div class="form-group">
     <label>Nombre</label>
