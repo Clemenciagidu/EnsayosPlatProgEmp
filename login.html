@@ -21,10 +21,70 @@
 
 			frm.addEventListener("submit",function(event){
 				event.preventDefault();
-				pst.validate();
-				frm.classList.add("was-validated");
+
+				if(pst.validate()){
+					procesarDatos();
+				}
+				else{
+					frm.classList.add("was-validated");
+				}
+				
 			});
 		};
+
+
+
+		function validarLogin(json)
+		{
+			//let usuario = JSON.parse(localStorage.getItem(correo.value));
+
+			//console.log(usuario);
+			console.log(json);
+
+			//if(usuario.clave == json.clave)
+			//{
+				//alert("Usuario logeado");
+			//}
+			//else
+			//{
+				//alert("Datos incorrectos");
+				//frm.reset();
+			//}
+			
+		}
+
+
+
+
+
+
+
+
+
+		function procesarDatos(){
+	    
+		let usuario = localStorage.getItem("usuario");
+
+		if(usuario)
+		{
+		  fetch('scripts/script.php', {
+			method: 'post',
+			body: new FormData(frm)
+		  }).then(function(response) {
+			return response.json();
+		  }).then(function(json){
+			validarLogin(json);
+		  }).catch(function(err) {
+			// Error :(
+			//console.log(err);
+		  });
+		}
+		//else
+		//{
+			//alert("Datos incorrectos");
+		//}
+	}
+
 
 
 
