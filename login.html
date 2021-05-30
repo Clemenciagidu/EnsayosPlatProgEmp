@@ -36,20 +36,22 @@
 
 		function validarLogin(json)
 		{
-			//let usuario = JSON.parse(localStorage.getItem(correo.value));
+			let usuario = JSON.parse(localStorage.getItem("usuario"));
 
 			//console.log(usuario);
-			console.log(json);
+			//console.log(json);
 
-			//if(usuario.clave == json.clave)
-			//{
+			if(usuario.clave == json.clave)
+			{
+				location.href = "http://google.com"; 
 				//alert("Usuario logeado");
-			//}
-			//else
-			//{
-				//alert("Datos incorrectos");
+			}
+			else
+			{
+				alert("Datos incorrectos");
 				//frm.reset();
-			//}
+			}
+			//console.log(json);
 			
 		}
 
